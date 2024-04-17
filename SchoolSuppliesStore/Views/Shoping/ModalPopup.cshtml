@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model SchoolSuppliesStore.Models.ApplicationUser
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // var currentUser = await Model.GetUserAsync(User);
+}
+
+@section Style{
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,900&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-md  modal-dialog-centered" role="document">
+        <div class="modal-content" style="border-radius:20px">
+            <div class="modal-body py-0">
+
+
+                <div class="d-block main-content " >
+                    
+                    <div class="content-text p-4">
+
+                        <h3 class="mb-4">Bạn chưa đăng nhập vui lòng đăng nhập trước khi thực hiện!</h3>
+                        <p class="mb-4"></p>
+                        <div class="d-flex">
+                            <div class="ml-auto">
+                                <a asp-action="Index" class="btn btn-link" data-dismiss="modal">No thanks</a>
+                                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary px-4">Go to Signin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/shop/modal/js/jquery-3.3.1.min.js"></script>
+    <script src="~/shop/modal/js/popper.min.js"></script>
+    <script src="~/shop/modal/js/bootstrap.min.js"></script>
+    <script src="~/shop/modal/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#exampleModalCenter').modal('show');
+        });
+        $('#goToAdminPage').click(function () {
+            window.location.href = '@Url.Action("Indentity/", "Home", new { area = "admin" })';
+        });
+    </script>
+}

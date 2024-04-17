@@ -1,0 +1,62 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+@section Head {
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/shop/login/css/roboto-font.css">
+        <link rel="stylesheet" type="text/css" href="~/shop/login/fonts/font-awesome-5/css/fontawesome-all.min.css">
+        <!-- Main Style Css -->
+        <link rel="stylesheet" href="~/shop/login/css/style.css" />
+    </head>
+}
+
+@section Style {
+    <style>
+        .transision{
+            box-shadow: revert;
+            border-radius: 5px;
+            border: 1px solid #90BC79;
+        }
+    </style>
+}
+
+<div class="container bg-light w-50 shadow mt-4" style="border-radius:14px">
+    <form class="form-detail" id="account" method="post" asp-route-returnUrl="@Model.ReturnUrl">
+        <h2 class="pt-2">Register Account</h2>
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        <div class="form-row">
+            <label for="full-name">Email Address</label>
+            <input type="text"  asp-for="Input.Email" id="full-name" class="input-text transision" placeholder="123@exampe.com" required>
+
+        </div>
+        <div class="form-row">
+            <label for="full-name">Password</label>
+            <input type="password" asp-for="Input.Password" id="full-name" class="input-text" placeholder="******" required>
+
+        </div>
+        <div class="form-row text-center mb-2 pb-3 w-25">
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary" style="border-radius:15px">Sign In</button>
+            @* <input type="submit" name="register" class="register" value="Register"  /> *@
+        </div>
+        <div>
+            <p>
+                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+            </p>
+            <p>
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+            </p>
+            <p>
+                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="mb-3">Resend email confirmation</a>
+            </p>
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SchoolSuppliesStore.Models.Order>
+@{
+    ViewData["Title"] = "OrderManager";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Style {
+    <style>
+
+        .transion {
+            transition: all 0.3s ease;
+        }
+
+            .transion:hover {
+                transform: scale(1.01);
+            }
+    </style>
+}
+<div class="container bg-light shadow" style="border-radius:15px">
+    <table class="table mt-5">
+        <thead class="text-dark text-center">
+            <th>Order ID</th>
+            <th>Create Date</th>
+            <th>Fullname</th>
+            <th>Address</th>
+            <th>Phonenumber</th>
+            <th>Payment Type</th>
+            <th>Status</th>
+            <th>Change Confirm</th>
+        </thead>
+        <tbody class="text-center">
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.OrderDate.ToString("dd-MM-yy")</td>
+                    <td>@order.User.FullName</td>
+                    <td>@order.User.Address</td>
+                    <td>@order.User.PhoneNumber</td>
+                    <td>@((order.PaymentType == null) ? "COD" : order.PaymentType)</td>
+                    <td>@((order.Status == null || order.Status == false) ? "Unconfirmed" : "Confirm")</td>
+                    <td>
+                        @if (order.Status == false || order.Status == null)
+                        {
+                            <a asp-action="ConfirmOrder" asp-route-id ="@order.OrderId">
+                                <i class="bi bi-check-square"></i>
+                            </a>
+                        }
+                        else if (order.Status == true)
+                        {
+                            <i class="bi bi-check2-circle"></i>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

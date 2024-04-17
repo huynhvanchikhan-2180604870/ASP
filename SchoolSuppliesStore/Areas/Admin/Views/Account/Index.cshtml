@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SchoolSuppliesStore.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "AccountManager";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+@section Style {
+    <style>
+
+        .transion {
+            transition: all 0.3s ease;
+        }
+
+            .transion:hover {
+                transform: scale(1.01);
+            }
+    </style>
+}
+
+<div class="container bg-light mt-4 pb-5 shadow" style="border-radius:14px">
+    <div class="text-end">
+        <a asp-action="Add" class="btn btn-secondary mt-4 me-4">Add</a>
+    </div>
+    <table class="table ">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Full Name</td>
+                <td>Email</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <th>@user.Id</th>
+                    <th>@user.FullName</th>
+                    <th>@user.Email</th>
+                    <th>
+                        <a asp-action=""></a>
+                        <a class="btn btn-warning" asp-action="UpdateAccount" asp-route-id="@user.Id">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

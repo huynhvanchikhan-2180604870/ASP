@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SchoolSuppliesStore.Models.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-end mt-3 mb-3">
+    <a asp-action="Add" class="btn btn-success">Add Category</a>
+</div>
+
+<div class="container bg-light" style="border-radius:13px">
+    <table class="table table-responsive table-borderless">
+
+        <thead>
+            <tr class="bg-light">
+                <th scope="col" width="5%">ID</th>
+                <th scope="col" width="20%">Name</th>
+                <th scope="col" width="10%">Products Count</th>
+                <th scope="col" width="20%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.CategoryId</td>
+                    <td>@item.Name</td>
+
+                    <td>@item.Products.Count</td>
+                    <td>
+                        
+                        <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-danger" style="border-radius:15px">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</div>
+

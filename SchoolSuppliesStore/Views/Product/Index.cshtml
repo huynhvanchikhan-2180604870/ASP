@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SchoolSuppliesStore.Models.Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-end mt-3 mb-3">
+    <a class="btn  btn-success me-3" asp-action="Shop" style="border-radius:15px">Switch to View Client</a>
+    <a class="btn  btn-success me-3" asp-action="Index" asp-controller="ProductImages" style="border-radius:15px">Add Images</a>
+    <a class="btn  btn-success" asp-action="Add" style="border-radius:15px">Add Product</a>
+</div>
+
+<div class="container  bg-light shadow" style="border-radius:14px">
+    <table class="table table-responsive table-borderless">
+
+        <thead>
+            <tr class="bg-light">
+                <th scope="col" width="5%">ID</th>
+                <th scope="col" width="20%">Name</th>
+                <th scope="col" width="10%">Category</th>
+                <th scope="col" width="20%">Price</th>
+                <th scope="col" width="20%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.ProductId</td>
+                    <td>@item.Name</td>
+                    <td><i class="fa fa-check-circle-o green"></i><span class="ms-1">@item.Category.Name</span></td>
+                    <td>@item.Price</td>
+                    <td>
+                        <a asp-action="Detail" asp-route-id="@item.ProductId" class="btn btn-primary" style="border-radius:15px">
+                            <i class="fa fa-eye">
+
+                            </i>
+                        </a>
+                        <a asp-action="Update" asp-route-id="@item.ProductId" class="btn btn-warning " style="border-radius:15px">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger" style="border-radius:15px">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</div>
+<div class="mb-5"></div>

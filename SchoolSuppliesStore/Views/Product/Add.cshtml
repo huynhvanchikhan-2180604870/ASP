@@ -1,0 +1,58 @@
+﻿@model SchoolSuppliesStore.Models.Product
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container bg-light mb-5 justify-content-center mt-4 shadow" style="border-radius:14px; width:55%">
+    <div class="align-content-center m-auto">
+        <form asp-action="Add" method="post" enctype="multipart/form-data">
+            <div class="form-group pt-5">
+                <label asp-for="Name"></label>
+                <div class="col-sm-12">
+                    <input asp-for="Name" class="col-sm-4 form-control text-right" style="border: 1px solid #90BC79; width: 98%" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                
+            </div>
+
+            <div class="form-group pt-2">
+                <label asp-for="Price"></label>
+                <div class="col-sm-12">
+                    <input asp-for="Price" class="form-control" style="border: 1px solid #90BC79; width: 98%" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                
+            </div>
+            <div class="form-group pt-2">
+                <label asp-for="Description"></label>
+                <div class="col-sm-12">
+                    <textarea asp-for="Description" class="form-control" style="border: 1px solid #90BC79; width: 98%"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                
+
+            </div>
+            <div class="form-group pt-2">
+                <label asp-for="CategoryId">Category</label>
+                <div class="col-sm-12">
+                    <select asp-for="CategoryId" asp-items="ViewBag.Categories"
+                            class="form-control" style="border: 1px solid #90BC79; width: 98%"></select>
+                </div>
+                
+            </div>
+            <div class="form-group pt-2">
+                <label asp-for="Cover">Product Image</label>
+                <div class="col-sm-12">
+                    <input type="file" asp-for="Cover" class="form-control" accept="image/*" style="border: 1px solid #90BC79; width: 98%" />
+                </div>
+                
+            </div>
+            <div class="form-group pt-4 pb-3 text-center">
+                <button type="submit" class="btn btn-success">Add</button>
+            </div>
+
+        </form>
+    </div>
+</div>

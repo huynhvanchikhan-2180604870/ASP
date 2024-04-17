@@ -1,0 +1,103 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|c:\\users\\huynh\\onedrive\\m\u00E1y t\u00EDnh\\schoolsuppliesstore\\schoolsuppliesstore\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|solutionrelative:schoolsuppliesstore\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|c:\\users\\huynh\\onedrive\\m\u00E1y t\u00EDnh\\schoolsuppliesstore\\schoolsuppliesstore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|solutionrelative:schoolsuppliesstore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|c:\\users\\huynh\\onedrive\\m\u00E1y t\u00EDnh\\schoolsuppliesstore\\schoolsuppliesstore\\views\\shoping\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|solutionrelative:schoolsuppliesstore\\views\\shoping\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|c:\\users\\huynh\\onedrive\\m\u00E1y t\u00EDnh\\schoolsuppliesstore\\schoolsuppliesstore\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|solutionrelative:schoolsuppliesstore\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|c:\\users\\huynh\\onedrive\\m\u00E1y t\u00EDnh\\schoolsuppliesstore\\schoolsuppliesstore\\areas\\admin\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{083E6892-3422-40FD-B4E0-070835FDA6F5}|SchoolSuppliesStore\\SchoolSuppliesStore.csproj|solutionrelative:schoolsuppliesstore\\areas\\admin\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\Program.cs",
+              "RelativeDocumentMoniker": "SchoolSuppliesStore\\Program.cs",
+              "ToolTip": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\Program.cs",
+              "RelativeToolTip": "SchoolSuppliesStore\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T12:38:03.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\appsettings.json",
+              "RelativeDocumentMoniker": "SchoolSuppliesStore\\appsettings.json",
+              "ToolTip": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\appsettings.json",
+              "RelativeToolTip": "SchoolSuppliesStore\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-17T11:33:48.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\Views\\Shoping\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "SchoolSuppliesStore\\Views\\Shoping\\Checkout.cshtml",
+              "ToolTip": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\Views\\Shoping\\Checkout.cshtml",
+              "RelativeToolTip": "SchoolSuppliesStore\\Views\\Shoping\\Checkout.cshtml",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAAAHQAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-15T12:24:02.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "SchoolSuppliesStore\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "SchoolSuppliesStore\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAgwEYAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T23:04:44.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\Areas\\Admin\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "SchoolSuppliesStore\\Areas\\Admin\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\huynh\\OneDrive\\M\u00E1y t\u00EDnh\\SchoolSuppliesStore\\SchoolSuppliesStore\\Areas\\Admin\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "SchoolSuppliesStore\\Areas\\Admin\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAhwDgAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T23:00:20.057Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

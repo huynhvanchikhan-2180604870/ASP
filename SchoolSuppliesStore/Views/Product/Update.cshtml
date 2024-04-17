@@ -1,0 +1,64 @@
+﻿@model SchoolSuppliesStore.Models.Product
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Update" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="ProductId" />
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId" asp-items="@ViewBag.Categories"
+                class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Cover">Product Image</label>
+        <input type="file" asp-for="Cover" class="form-control" id="imageInput" accept="image/*" />
+        <img src="@Model.Cover" alt="Product Image" style="max-width:200px;" id="previewImage" />
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-warning">Update</button>
+        <a asp-action="Index" class="btn btn-secondary text-dark">Back to list</a>
+    </div>
+</form>
+
+<div class="mb-5"></div>
+
+<script>
+    
+    // Biến để kiểm tra xem người dùng đã chọn một tệp mới hay không
+    let fileChanged = false;
+
+    // Sự kiện thay đổi của input file
+    document.getElementById('imageInput').addEventListener('change', function (event) {
+        fileChanged = true; // Đánh dấu rằng tệp đã được thay đổi
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.getElementById("previewImage")
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    
+</script>
+
+

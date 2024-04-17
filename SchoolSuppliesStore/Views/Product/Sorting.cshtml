@@ -1,0 +1,699 @@
+﻿@model SchoolSuppliesStore.Models.ViewModels
+@{
+    ViewData["Title"] = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<!-- Hero Start -->
+<div class="container-fluid bg-primary hero-header mb-5 pb-4">
+    <div class="container text-center">
+        <h1 class="display-4 text-white mb-3 animated slideInDown">Shop</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
+                <li class="breadcrumb-item"><a class="text-white" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Shop</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Hero End -->
+<!-- Fruits Shop Start-->
+<div class="container-fluid fruite py-5 bg-light shadow" style="border-radius:14px">
+    <div class="container py-5">
+        <h1 class="mb-4 text-center">School Supplies</h1>
+        <div class="row g-4">
+            <div class="col-lg-12">
+                <div class="row g-4">
+                    <div class="col-xl-3 mb-4">
+                        <div class="input-group w-100 mx-auto d-flex">
+                            <form asp-action="Search" asp-controller="Product" class="input-group">
+                                <input type="search" name="value" class="form-control p-3" placeholder="search for products" aria-describedby="search-icon-1">
+                                <div class="input-group-append  pt-2">
+                                    <button class="btn btn-primary" type="submit" id="search-icon-1">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-6"></div>
+                    <div class="col-xl-3">
+                        <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
+                            <label for="fruits">Sort:</label>
+                            <select id="fruits" name="sortingtype" class="border-0 form-select-sm bg-light me-3" onchange="submitForm()">
+                                <option disabled selected>Select sorting option</option>
+                                @foreach (var item in ViewBag.Sorting as SelectList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3">
+                        <div class="row g-4">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <a asp-action="Shop" asp-route-category="" class="text-dark ">
+                                        <h4>Categories</h4>
+                                    </a>
+
+                                    <ul class="list-unstyled fruite-categorie">
+                                        @foreach (var cate in Model.Categories)
+                                        {
+                                            <li>
+                                                <div class="d-flex justify-content-between fruite-name text-light">
+                                                    <a asp-action="Shop" asp-route-category="@cate.CategoryId" class="text-dark ">@cate.Name</a>
+                                                    <span class="text-dark">@cate.Products.Count</span>
+                                                </div>
+                                            </li>
+                                        }
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <h4 class="mb-2">Price</h4>
+                                    <input type="range" class="form-range w-100" id="rangeInput" name="rangeInput" min="0" max="500" value="0" oninput="amount.value=rangeInput.value">
+                                    <output id="amount" name="amount" min-velue="0" max-value="500" for="rangeInput">0</output>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 shadow">
+                                <h4 class="mb-3">Sales Off</h4>
+                                @foreach (var item in Model.Categories)
+                                {
+                                    foreach (var product in item.Products)
+                                    {
+                                        if (product.IsSaleOff == true)
+                                        {
+                                            <div class="d-flex align-items-center justify-content-start">
+                                                <div class="rounded me-4" style="width: 100px; height: 100px;">
+                                                    <img src="@product.Cover" class="img-fluid rounded" alt="">
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-2">@product.Name</h6>
+                                                    <div class="d-flex mb-2">
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <div class="d-flex mb-2">
+                                                        <h5 class="fw-bold me-2">2.99 $</h5>
+                                                        <h5 class="text-danger text-decoration-line-through">@(product.Price - (decimal)2.99) $</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+
+
+                                <div class="d-flex justify-content-center my-4">
+                                    <a href="#" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Vew More</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row g-4 justify-content-center ">
+                            @foreach (var product in Model.Products)
+                            {
+                                <div class="col-md-6 col-lg-6 col-xl-4 ">
+                                    <div class="position-relative fruite-item" style="border-radius:10px; border:1px solid #198754">
+                                        <div class="fruite-img">
+                                            <img src="@product.Cover" class="img-fluid w-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="text-white badge bg-success px-3 py-1 position-absolute" style="top: 10px; left: 10px;border-radius:12px">@product.Category.Name</div>
+
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom rounded-3">
+                                            <h4 data-toggle="tooltip" data-placement="top" title="@product.Name">
+                                                @product.Name.Substring(0, Math.Min(@product.Name.Length, 20))@(product.Name.Length > 20 ? "..." : "")
+                                            </h4>
+                                            <p data-toggle="tooltip" data-placement="top" title="@product.Description">
+                                                @product.Description.Substring(0, Math.Min(@product.Description.Length, 10))@(product.Description.Length > 10 ? "..." : "")
+                                            </p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$@product.Price</p>
+                                                <a asp-action="ProductDetail" asp-route-id="@product.ProductId" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+                        <div class="pagination d-flex justify-content-center mt-5">
+                            <a class="page-link shadow" style="border-radius:15px" href="@Url.Action("Shop", new { page =1 })">&laquo;</a>
+                            @for (int i = 1; i <= Math.Ceiling((double)Model.TotalProductsCount / Model.PageSize); i++)
+                            {
+                                <a class="page-link shadow @(Model.PageNumber == i ? "active" : "")" style="border-radius:15px" href="@Url.Action("Shop", new { page = i })">@i</a>
+                            }
+                            <a class="page-link shadow " style="border-radius:15px" href="@Url.Action("Shop", new { page = Math.Ceiling((double)Model.TotalProductsCount / Model.PageSize) })">&raquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Fruits Shop End-->
+@section Style {
+    <style>
+
+        /*** Spinner Start ***/
+        #spinner {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .8s ease-out, visibility 0s linear .5s;
+            z-index: 99999;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+            .pagination li {
+                margin: 0 5px;
+            }
+
+                .pagination li a {
+                    text-decoration: none;
+                    color: #333;
+                    padding: 5px 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                }
+
+                .pagination li.active a {
+                    background-color: #007bff;
+                    color: #fff;
+                    border-color: #007bff;
+                }
+
+        #spinner.show {
+            transition: opacity .8s ease-out, visibility 0s linear .0s;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            width: 45px;
+            height: 45px;
+            align-items: center;
+            justify-content: center;
+            transition: 0.5s;
+            z-index: 99;
+        }
+        /*** Spinner End ***/
+
+
+        /*** Button Start ***/
+        .btn {
+            font-weight: 600;
+            transition: .5s;
+        }
+
+        .btn-square {
+            width: 32px;
+            height: 32px;
+        }
+
+        .btn-sm-square {
+            width: 34px;
+            height: 34px;
+        }
+
+        .btn-md-square {
+            width: 44px;
+            height: 44px;
+        }
+
+        .btn-lg-square {
+            width: 56px;
+            height: 56px;
+        }
+
+        .btn-square,
+        .btn-sm-square,
+        .btn-md-square,
+        .btn-lg-square {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: normal;
+        }
+
+        .btn.border-secondary {
+            transition: 0.5s;
+        }
+
+            .btn.border-secondary:hover {
+                background: var(--bs-secondary) !important;
+                color: var(--bs-white) !important;
+            }
+
+        /*** Topbar Start ***/
+        .fixed-top {
+            transition: 0.5s;
+            background: var(--bs-white);
+            border: 0;
+        }
+
+        .topbar {
+            padding: 20px;
+            border-radius: 230px 100px;
+        }
+
+            .topbar .top-info {
+                font-size: 15px;
+                line-height: 0;
+                letter-spacing: 1px;
+                display: flex;
+                align-items: center;
+            }
+
+            .topbar .top-link {
+                font-size: 15px;
+                line-height: 0;
+                letter-spacing: 1px;
+                display: flex;
+                align-items: center;
+            }
+
+                .topbar .top-link a {
+                    letter-spacing: 1px;
+                }
+
+                    .topbar .top-link a small:hover {
+                        color: var(--bs-secondary) !important;
+                        transition: 0.5s;
+                    }
+
+                        .topbar .top-link a small:hover i {
+                            color: var(--bs-primary) !important;
+                        }
+        /*** Topbar End ***/
+
+        /*** Navbar Start ***/
+        .navbar .navbar-nav .nav-link {
+            padding: 10px 15px;
+            font-size: 16px;
+            transition: .5s;
+        }
+
+        .navbar {
+            height: 100px;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+
+            .navbar .navbar-nav .nav-link:hover,
+            .navbar .navbar-nav .nav-link.active,
+            .fixed-top.bg-white .navbar .navbar-nav .nav-link:hover,
+            .fixed-top.bg-white .navbar .navbar-nav .nav-link.active {
+                color: var(--bs-primary);
+            }
+
+            .navbar .dropdown-toggle::after {
+                border: none;
+                content: "\f107";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 700;
+                vertical-align: middle;
+                margin-left: 8px;
+            }
+
+
+
+        .dropdown .dropdown-menu a:hover {
+            background: var(--bs-secondary);
+            color: var(--bs-primary);
+        }
+
+        .navbar .nav-item:hover .dropdown-menu {
+            transform: rotateX(0deg);
+            visibility: visible;
+            background: var(--bs-light) !important;
+            border-radius: 10px !important;
+            transition: .5s;
+            opacity: 1;
+        }
+
+        #searchModal .modal-content {
+            background: rgba(255, 255, 255, .8);
+        }
+        /*** Navbar End ***/
+
+        /*** Hero Header ***/
+        .hero-header {
+            background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(../img/hero-img.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .carousel-item {
+            position: relative;
+        }
+
+            .carousel-item a {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 25px;
+                background: linear-gradient(rgba(255, 181, 36, 0.7), rgba(255, 181, 36, 0.7));
+            }
+
+        .carousel-control-next,
+        .carousel-control-prev {
+            width: 48px;
+            height: 48px;
+            border-radius: 48px;
+            border: 1px solid var(--bs-white);
+            background: var(--bs-primary);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .carousel-control-next {
+            margin-right: 20px;
+        }
+
+        .carousel-control-prev {
+            margin-left: 20px;
+        }
+
+        .page-header {
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/cart-page-header-img.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        /*** Hero Header end ***/
+
+
+        /*** featurs Start ***/
+        .featurs .featurs-item .featurs-icon {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+            .featurs .featurs-item .featurs-icon::after {
+                content: "";
+                width: 35px;
+                height: 35px;
+                background: var(--bs-secondary);
+                position: absolute;
+                bottom: -10px;
+                transform: translate(-50%);
+                transform: rotate(45deg);
+                background: var(--bs-secondary);
+            }
+        /*** featurs End ***/
+
+
+        /*** service Start ***/
+        .service .service-item .service-content {
+            position: relative;
+            width: 250px;
+            height: 130px;
+            top: -50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /*** service End ***/
+
+
+        /*** Fruits Start ***/
+        .fruite .tab-class .nav-item a.active {
+            background: var(--bs-secondary) !important;
+        }
+
+            .fruite .tab-class .nav-item a.active span {
+                color: var(--bs-white) !important;
+            }
+
+        .fruite .fruite-categorie .fruite-name {
+            line-height: 40px;
+        }
+
+            .fruite .fruite-categorie .fruite-name a {
+                transition: 0.5s;
+            }
+
+                .fruite .fruite-categorie .fruite-name a:hover {
+                    color: var(--bs-secondary);
+                }
+
+        .fruite .fruite-item {
+            height: 100%;
+            transition: 0.5s;
+        }
+
+            .fruite .fruite-item:hover {
+                box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
+            }
+
+            .fruite .fruite-item .fruite-img {
+                overflow: hidden;
+                transition: 0.5s;
+                border-radius: 10px 10px 0 0;
+            }
+
+                .fruite .fruite-item .fruite-img img {
+                    transition: 0.5s;
+                }
+
+                    .fruite .fruite-item .fruite-img img:hover {
+                        transform: scale(1.3);
+                    }
+        /*** Fruits End ***/
+
+
+        /*** vesitable Start ***/
+        .vesitable .vesitable-item {
+            height: 100%;
+            transition: 0.5s;
+        }
+
+            .vesitable .vesitable-item:hover {
+                box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
+            }
+
+            .vesitable .vesitable-item .vesitable-img {
+                overflow: hidden;
+                transition: 0.5s;
+                border-radius: 10px 10px 0 0;
+            }
+
+                .vesitable .vesitable-item .vesitable-img img {
+                    transition: 0.5s;
+                }
+
+                    .vesitable .vesitable-item .vesitable-img img:hover {
+                        transform: scale(1.2);
+                    }
+
+        .vesitable .owl-stage {
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .vesitable .owl-nav .owl-prev {
+            position: absolute;
+            top: -8px;
+            right: 0;
+            color: var(--bs-primary);
+            padding: 5px 25px;
+            border: 1px solid var(--bs-secondary);
+            border-radius: 20px;
+            transition: 0.5s;
+        }
+
+            .vesitable .owl-nav .owl-prev:hover {
+                background: var(--bs-secondary);
+                color: var(--bs-white);
+            }
+
+        .vesitable .owl-nav .owl-next {
+            position: absolute;
+            top: -8px;
+            right: 88px;
+            color: var(--bs-primary);
+            padding: 5px 25px;
+            border: 1px solid var(--bs-secondary);
+            border-radius: 20px;
+            transition: 0.5s;
+        }
+
+            .vesitable .owl-nav .owl-next:hover {
+                background: var(--bs-secondary);
+                color: var(--bs-white);
+            }
+        /*** vesitable End ***/
+
+
+        /*** Banner Section Start ***/
+        .banner .banner-btn:hover {
+            background: var(--bs-primary);
+        }
+        /*** Banner Section End ***/
+
+
+        /*** Facts Start ***/
+        .counter {
+            height: 100%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+        }
+
+            .counter i {
+                font-size: 60px;
+                margin-bottom: 25px;
+            }
+
+            .counter h4 {
+                color: var(--bs-primary);
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .counter h1 {
+                margin-bottom: 0;
+            }
+        /*** Facts End ***/
+
+
+        /*** testimonial Start ***/
+        .testimonial .owl-nav .owl-prev {
+            position: absolute;
+            top: -58px;
+            right: 0;
+            color: var(--bs-primary);
+            padding: 5px 25px;
+            border: 1px solid var(--bs-secondary);
+            border-radius: 20px;
+            transition: 0.5s;
+        }
+
+            .testimonial .owl-nav .owl-prev:hover {
+                background: var(--bs-secondary);
+                color: var(--bs-white);
+            }
+
+        .testimonial .owl-nav .owl-next {
+            position: absolute;
+            top: -58px;
+            right: 88px;
+            color: var(--bs-primary);
+            padding: 5px 25px;
+            border: 1px solid var(--bs-secondary);
+            border-radius: 20px;
+            transition: 0.5s;
+        }
+
+            .testimonial .owl-nav .owl-next:hover {
+                background: var(--bs-secondary);
+                color: var(--bs-white);
+            }
+        /*** testimonial End ***/
+
+
+        /*** Single Page Start ***/
+        .pagination {
+            display: inline-block;
+        }
+
+            .pagination a {
+                color: var(--bs-dark);
+                padding: 10px 16px;
+                text-decoration: none;
+                transition: 0.5s;
+                border: 1px solid var(--bs-secondary);
+                margin: 0 4px;
+            }
+
+                .pagination a.active {
+                    background-color: var(--bs-primary);
+                    color: var(--bs-light);
+                    border: 1px solid var(--bs-secondary);
+                }
+
+                .pagination a:hover:not(.active) {
+                    background-color: var(--bs-primary)
+                }
+
+        .nav.nav-tabs .nav-link.active {
+            border-bottom: 2px solid var(--bs-secondary) !important;
+        }
+        /*** Single Page End ***/
+
+
+        /*** Footer Start ***/
+        .footer .footer-item .btn-link {
+            line-height: 35px;
+            color: rgba(255, 255, 255, .5);
+            transition: 0.5s;
+        }
+
+            .footer .footer-item .btn-link:hover {
+                color: var(--bs-secondary) !important;
+            }
+
+        .footer .footer-item p.mb-4 {
+            line-height: 35px;
+        }
+        /*** Footer End ***/
+
+
+    </style>
+}
+
+@section Scripts {
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        function submitForm() {
+            var selectedOption = document.getElementById('fruits').value;
+            window.location.href = '/Product/Sorting?sortingtype=' + selectedOption;
+        }
+    </script>
+}

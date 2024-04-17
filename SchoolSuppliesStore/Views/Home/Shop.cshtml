@@ -1,0 +1,90 @@
+﻿@model IEnumerable< SchoolSuppliesStore.Models.Product>
+@{
+    ViewData["Title"] = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    backgroud
+</style>
+
+<!-- Hero Start -->
+<div class="container-fluid bg-primary hero-header mb-5 pb-4">
+    <div class="container text-center">
+        <h1 class="display-4 text-white mb-3 animated slideInDown">Shop</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
+                <li class="breadcrumb-item"><a class="text-white" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Shop</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Hero End -->
+<!-- Product Start -->
+<div class="container-fluid py-5 mb-5 bg-light shadow" style="border-radius:10px">
+    <div class="container">
+        <div class="row pd-3">
+            @foreach (var product in Model)
+            {
+                <div class="col-lg-3 col-md-6 transition">
+                    <div class="col-12 p-1 mt-3" style="border: 3px solid #90BC79; border-radius:8px;">
+                        <div class="card shadow" style="border-radius:5px;">
+                            <img src="@product.Cover" style="border-radius:5px; height:200px;" />
+                            <div class="card-header">
+                                <div class="pl-1">
+                                    <span class="card-title h5 text-info font-weight-bold" data-toggle="tooltip" data-placement="top" title="@product.Name">
+                                        @product.Name.Substring(0, Math.Min(@product.Name.Length, 25))@(product.Name.Length > 25 ? "..." : "")
+                                    </span>
+
+                                </div>
+                                <div class="pl-1">
+                                    <img srcset="https://salt.tikicdn.com/ts/upload/d7/56/04/b93b8c666e13f49971483596ef14800f.png" width="89" height="20" alt="is_authentic" style="width:89px;height:20px;opacity:1" class="styles__StyledImg-sc-p9s3t3-0 hbqSye">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-title">
+                                    <i class="bi bi-person-circle"></i> <span>@product.Category.Name</span>
+                                </p>
+                                <p><i class="bi bi-tag"></i> <strike>@product.Price.ToString("0.00")</strike></p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a asp-controller="Home" asp-action="Detail" class="btn text-light shadow" style="background: #90BC79"
+                               asp-route-id="@product.ProductId">Detail</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="mb-5"></div>
+@section Scripts {
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}
+@section Style {
+    <style>
+        
+        .tooltip-inner {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .transition {
+            transition: transform 0.3s ease;
+        }
+
+            .transition:hover {
+                transform: scale(1.02);
+            }
+    </style>
+}
+
+
+
+<!-- Product End -->
